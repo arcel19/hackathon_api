@@ -13,7 +13,8 @@ class StatisticController extends Controller
      */
     public function index()
     {
-        //
+        $statistic = Statistic::all();
+        return response()->json($statistic);
     }
 
     /**
@@ -21,7 +22,23 @@ class StatisticController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'goals'=> 'required|integer',
+            'matches'=>'string|integer',
+            'average'=>'required|integer',
+            'user_id'=>'required|integer',
+            'assists'=>'required|integer',
+        ]);
+
+        $statistic = Statistic::create([
+            'goals'=>$request->goals,
+            'matches'=>$request->matches,
+            'average'=>$request->average,
+            'assists'=>$request->assists,
+            'user_id'=>$request->user_id,
+        ]);
+
+        return response()->json($statistic);
     }
 
     /**
@@ -29,7 +46,7 @@ class StatisticController extends Controller
      */
     public function show(Statistic $statistic)
     {
-        //
+        return response()->json($statistic);
     }
 
     /**
@@ -37,7 +54,22 @@ class StatisticController extends Controller
      */
     public function update(Request $request, Statistic $statistic)
     {
-        //
+        $request->validate([
+            'goals'=> 'required|integer',
+            'matches'=>'string|integer',
+            'average'=>'required|integer',
+            'user_id'=>'required|integer',
+            'assists'=>'required|integer',
+        ]);
+        $statistic->update([
+            'goals'=>$request->goals,
+            'matches'=>$request->matches,
+            'average'=>$request->average,
+            'assists'=>$request->assists,
+            'user_id'=>$request->user_id,
+        ]);
+
+        return response()->json($statistic);
     }
 
     /**
@@ -45,6 +77,7 @@ class StatisticController extends Controller
      */
     public function destroy(Statistic $statistic)
     {
-        //
+        $statistic->delete();
+        return response()->json($statistic);
     }
 }

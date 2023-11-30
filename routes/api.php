@@ -7,6 +7,7 @@ use App\Http\Controllers\API\SportController;
 use App\Http\Controllers\API\LeagueController;
 use App\Http\Controllers\API\CompetenceController;
 use App\Http\Controllers\API\RealisationController;
+use App\Http\Controllers\API\StatisticController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,4 @@ Route::apiResource('teams', TeamController::class);
 Route::apiResource('realisation', RealisationController::class);
 Route::apiResource('league', LeagueController::class);
 Route::apiResource('competence', CompetenceController::class);
+Route::apiResource('statistic', StatisticController::class);
