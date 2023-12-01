@@ -61,13 +61,7 @@ class StatisticController extends Controller
             'user_id'=>'required|integer',
             'assists'=>'required|integer',
         ]);
-        $statistic->update([
-            'goals'=>$request->goals,
-            'matches'=>$request->matches,
-            'average'=>$request->average,
-            'assists'=>$request->assists,
-            'user_id'=>$request->user_id,
-        ]);
+        $statistic->update($request->only(['goals', 'matches', 'average', 'assists', 'user_id']));
 
         return response()->json($statistic);
     }
